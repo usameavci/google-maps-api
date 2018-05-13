@@ -1,10 +1,10 @@
 import GoogleMaps from './GoogleMaps'
-import GoogleMapsLoader from './GoogleMapsMarker'
-import GoogleMapsLatLng from './GoogleMapsMarker'
+import GoogleMapsLoader from './GoogleMapsLoader'
+import GoogleMapsLatLng from './GoogleMapsLatLng'
 import GoogleMapsMarker from './GoogleMapsMarker'
 import GoogleMapsGeocoder from './GoogleMapsGeocoder'
 import GoogleMapsGeolocation from './GoogleMapsGeolocation'
-import GoogleMapsLatLngBounds from './GoogleMapsMarker'
+import GoogleMapsLatLngBounds from './GoogleMapsLatLngBounds'
 import GoogleMapsAutocomplete from './GoogleMapsAutocomplete'
 
 export {

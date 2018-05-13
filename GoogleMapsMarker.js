@@ -1,10 +1,8 @@
-// import GoogleMapsGeocoder from './GoogleMapsGeocoder'
 import GoogleMapsLatLng from './GoogleMapsLatLng'
 
 export default class GoogleMapsMarker {
   constructor () {
     this.context = new window.google.maps.Marker()
-    // this.geocoder = new GoogleMapsGeocoder()
 
     return this
   }

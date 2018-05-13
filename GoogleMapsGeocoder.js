@@ -1,4 +1,4 @@
-import HelperStrings from '@services/Helpers/Strings'
+import stripHtml from "string-strip-html"
 import GoogleMapsLatLng from './GoogleMapsLatLng'
 import GoogleMapsLatLngBounds from './GoogleMapsLatLngBounds'
 
@@ -115,7 +115,7 @@ export default class GoogleMapsGeocoder {
     }
 
     if (item.adr_address) {
-      obj.address_formatted = HelperStrings.stripHtmlEntities(item.adr_address)
+      obj.address_formatted = stripHtml(item.adr_address)
     } else {
       obj.address_formatted = item.formatted_address
     }
@@ -159,7 +159,7 @@ export default class GoogleMapsGeocoder {
     }
 
     if (item.adr_address) {
-      obj.address_formatted = HelperStrings.stripHtmlEntities(item.adr_address)
+      obj.address_formatted = stripHtml(item.adr_address)
     } else {
       obj.address_formatted = item.formatted_address
     }

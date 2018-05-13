@@ -7,7 +7,7 @@ import GoogleMapsGeolocation from './GoogleMapsGeolocation'
 import GoogleMapsLatLngBounds from './GoogleMapsMarker'
 import GoogleMapsAutocomplete from './GoogleMapsAutocomplete'
 
-export default {
+export {
   GoogleMaps,
   GoogleMapsLoader,
   GoogleMapsLatLng,
@@ -15,5 +15,5 @@ export default {
   GoogleMapsGeocoder,
   GoogleMapsGeolocation,
   GoogleMapsLatLngBounds,
-  GoogleMapsAutocomplete 
+  GoogleMapsAutocomplete
 }

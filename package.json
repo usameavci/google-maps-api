@@ -1,0 +1,10 @@
+{
+  "name": "google-maps-api",
+  "version": "1.0.0",
+  "description": "Google maps basic api service",
+  "main": "index.js",
+  "repository": "https://github.com/usameavci/google-maps-api",
+  "author": "Üsame Fethullah AVCI <usameavci@gmail.com>",
+  "license": "None",
+  "private": false
+}

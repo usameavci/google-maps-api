@@ -21,13 +21,14 @@ export default class GoogleMapsAutocomplete {
   onPlaceChanged (cb) {
     this.autocomplete.addListener('place_changed', () => {
       let place = this.autocomplete.getPlace()
-      place = this.geocoder.parseGeocodeFromLocation(place)
 
       if (place && !place.geometry) {
         return cb({
           message: `No details available for input: '${place.name}'`
         })
       }
+
+      place = this.geocoder.parseGeocodeFromLocation(place)
 
       return cb(null, place)
     })

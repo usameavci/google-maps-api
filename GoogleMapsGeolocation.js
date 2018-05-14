@@ -1,6 +1,6 @@
-import GoogleMapsLatLng from './GoogleMapsLatLng'
+const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 
-export default class GoogleMapsGeolocation {
+module.exports = class GoogleMapsGeolocation {
   static getPosition () {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {

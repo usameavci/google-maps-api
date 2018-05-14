@@ -1,13 +1,13 @@
 var setUp = false
 
-export const loaded = new Promise((resolve, reject) => {
+const loaded = new Promise((resolve, reject) => {
   if (typeof window === 'undefined') {
     return
   }
   window['vueGoogleMapsInit'] = resolve
 })
 
-export const load = (options, loadCn) => {
+const load = (options, loadCn) => {
   if (typeof document === 'undefined') {
     return
   }
@@ -40,4 +40,9 @@ export const load = (options, loadCn) => {
     document.head.appendChild(googleMapScript)
     setUp = true
   }
+}
+
+module.exports = {
+  load,
+  loaded
 }

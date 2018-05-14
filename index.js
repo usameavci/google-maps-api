@@ -1,13 +1,13 @@
-import GoogleMaps from './GoogleMaps'
-import GoogleMapsLoader from './GoogleMapsLoader'
-import GoogleMapsLatLng from './GoogleMapsLatLng'
-import GoogleMapsMarker from './GoogleMapsMarker'
-import GoogleMapsGeocoder from './GoogleMapsGeocoder'
-import GoogleMapsGeolocation from './GoogleMapsGeolocation'
-import GoogleMapsLatLngBounds from './GoogleMapsLatLngBounds'
-import GoogleMapsAutocomplete from './GoogleMapsAutocomplete'
+const GoogleMaps = require('./GoogleMaps')
+const GoogleMapsLoader = require('./GoogleMapsLoader')
+const GoogleMapsLatLng = require('./GoogleMapsLatLng')
+const GoogleMapsMarker = require('./GoogleMapsMarker')
+const GoogleMapsGeocoder = require('./GoogleMapsGeocoder')
+const GoogleMapsGeolocation = require('./GoogleMapsGeolocation')
+const GoogleMapsLatLngBounds = require('./GoogleMapsLatLngBounds')
+const GoogleMapsAutocomplete = require('./GoogleMapsAutocomplete')
 
-export {
+module.exports = {
   GoogleMaps,
   GoogleMapsLoader,
   GoogleMapsLatLng,

@@ -1,6 +1,6 @@
-import GoogleMapsLatLng from './GoogleMapsLatLng'
+const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 
-export default class GoogleMapsMarker {
+module.exports = class GoogleMapsMarker {
   constructor () {
     this.context = new window.google.maps.Marker()
 

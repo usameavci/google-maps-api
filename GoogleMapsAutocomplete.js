@@ -1,6 +1,6 @@
-import GoogleMapsGeocoder from './GoogleMapsGeocoder'
+const GoogleMapsGeocoder = require('./GoogleMapsGeocoder')
 
-export default class GoogleMapsAutocomplete {
+module.exports = class GoogleMapsAutocomplete {
   constructor (input) {
     this.autocomplete = new window.google.maps.places.Autocomplete(input)
     this.geocoder = new GoogleMapsGeocoder()

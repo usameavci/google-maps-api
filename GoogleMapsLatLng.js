@@ -1,4 +1,4 @@
-export default class GoogleMapsLatLng {
+module.exports = class GoogleMapsLatLng {
   constructor (lat, lng) {
     if (lat.lat && lat.lng) {
       this.context = lat

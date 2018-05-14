@@ -1,8 +1,8 @@
-import stripHtml from "string-strip-html"
-import GoogleMapsLatLng from './GoogleMapsLatLng'
-import GoogleMapsLatLngBounds from './GoogleMapsLatLngBounds'
+const stripHtml = require('string-strip-html')
+const GoogleMapsLatLng = require('./GoogleMapsLatLng')
+const GoogleMapsLatLngBounds = require('./GoogleMapsLatLngBounds')
 
-export default class GoogleMapsGeocoder {
+module.exports = class GoogleMapsGeocoder {
   constructor () {
     this.geocoder = new window.google.maps.Geocoder()
     this.autocomplete = new window.google.maps.places.AutocompleteService()

@@ -1,6 +1,6 @@
-import GoogleMapsLatLng from './GoogleMapsLatLng'
+const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 
-export default class GoogleMapsLatLngBounds {
+module.exports = class GoogleMapsLatLngBounds {
   constructor (southeast, northwest) {
     if (southeast.b && southeast.f) {
       this.context = southeast

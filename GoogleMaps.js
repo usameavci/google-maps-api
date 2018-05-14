@@ -1,8 +1,8 @@
-import { merge, unset } from 'lodash'
-import { load, loaded } from './GoogleMapsLoader'
-import GoogleMapsLatLng from './GoogleMapsLatLng'
+const { merge, unset } = require('lodash')
+const { load, loaded } = require('./GoogleMapsLoader')
+const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 
-export default class GoogleMaps {
+module.exports = class GoogleMaps {
   constructor (el, options) {
     if (typeof el === 'string') {
       el = document.getElementById(el)

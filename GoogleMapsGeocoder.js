@@ -10,10 +10,10 @@ module.exports = class GoogleMapsGeocoder {
       country: 12,
       postal_code: 12,
       city: 13,
-      district: 15,
-      neighborhood: 15,
-      street_name: 17,
-      street_number: 18
+      district: 14,
+      neighborhood: 14,
+      street_name: 15,
+      street_number: 16
     }
     this.typeDefinitions = [{
       key: 'country',

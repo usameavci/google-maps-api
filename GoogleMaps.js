@@ -1,16 +1,20 @@
-const { merge, unset } = require('lodash')
+const { merge, unset, isUndefined } = require('lodash')
 const { load, loaded } = require('./GoogleMapsLoader')
 const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 
 module.exports = class GoogleMaps {
   constructor (el, options) {
-    if (typeof el === 'string') {
-      el = document.getElementById(el)
-    }
+    if (!isUndefined(el) && el !== null) {
+      if (typeof el === 'string') {
+        el = document.getElementById(el)
+      }
 
-    if (options && options.height) {
-      el.style.height = `${options.height}px`
-      unset(options.height)
+      if (options && options.height) {
+        el.style.height = `${options.height}px`
+        unset(options.height)
+      }
+
+      this.el = el
     }
 
     const defaults = {
@@ -21,7 +25,6 @@ module.exports = class GoogleMaps {
 
     const baseOptions = GoogleMaps.getOptions()
 
-    this.el = el
     this.options = merge(defaults, baseOptions, options)
 
     const config = GoogleMaps.getConfig()
@@ -33,7 +36,9 @@ module.exports = class GoogleMaps {
   ready () {
     return new Promise(resolve => {
       loaded.then(() => {
-        this.context = new window.google.maps.Map(this.el, this.options)
+        if (this.el) {
+          this.context = new window.google.maps.Map(this.el, this.options)
+        }
         resolve(this)
       })
     })

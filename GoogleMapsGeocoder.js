@@ -1,3 +1,4 @@
+const { last } = require('lodash')
 const stripHtml = require('string-strip-html')
 const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 const GoogleMapsLatLngBounds = require('./GoogleMapsLatLngBounds')
@@ -102,11 +103,46 @@ module.exports = class GoogleMapsGeocoder {
   }
 
   parseGeocodeFromLocation (item) {
-    const ac = (item.address_components && item.address_components[0]) || {}
+    let ac
+    let zoom = 12
+    let address_extended = []
+
+    if (item.address_components && item.address_components.length > 0) {
+      this.typeDefinitions.map(definition => {
+        item.address_components.map(component => {
+          if (component.types.indexOf(definition.type) !== -1) {
+            address_extended.push({
+              key: definition.key,
+              label: definition.label,
+              value: component.long_name
+            })
+
+            if (definition.key === 'country') {
+              ac = component
+            } else if (definition.key === 'city') {
+              ac = component
+            } else if (definition.key === 'district') {
+              ac = component
+            } else if (definition.key === 'neighborhood') {
+              ac = component
+            }
+          }
+
+          return component
+        })
+
+        return definition
+      })
+
+      const lastAddressItem = last(address_extended)
+      zoom = this.zoomDefinitions[lastAddressItem.key]
+    }
+
     const obj = {
       place_id: item.place_id,
       name: ac.long_name || item.name,
-      address_extended: [],
+      address_extended,
+      zoom,
       geometry: {
         location: new GoogleMapsLatLng(item.geometry.location),
         viewport: new GoogleMapsLatLngBounds(item.geometry.viewport)
@@ -118,27 +154,6 @@ module.exports = class GoogleMapsGeocoder {
       obj.address_formatted = stripHtml(item.adr_address)
     } else {
       obj.address_formatted = item.formatted_address
-    }
-
-    if (item.address_components && item.address_components.length > 0) {
-      this.typeDefinitions.map(definition => {
-        item.address_components.map(component => {
-          if (component.types.indexOf(definition.type) !== -1) {
-            obj.address_extended.push({
-              key: definition.key,
-              label: definition.label,
-              value: component.long_name
-            })
-          }
-
-          return component
-        })
-
-        return definition
-      })
-
-      const lastAddressItem = obj.address_extended[obj.address_extended.length - 1]
-      obj.zoom = this.zoomDefinitions[lastAddressItem.key]
     }
 
     return obj

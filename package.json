@@ -8,6 +8,7 @@
   "license": "None",
   "private": false,
   "dependencies": {
+    "lodash": "^4.17.10",
     "string-strip-html": "^1.4.2"
   }
 }

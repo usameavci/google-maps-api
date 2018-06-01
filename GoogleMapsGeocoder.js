@@ -125,6 +125,8 @@ module.exports = class GoogleMapsGeocoder {
               ac = component
             } else if (definition.key === 'neighborhood') {
               ac = component
+            } else if (definition.key === 'street_name') {
+              ac = component
             }
           }
 
@@ -161,25 +163,7 @@ module.exports = class GoogleMapsGeocoder {
 
   parseGeocodeFromPlaceId (results) {
     const item = results && results[0]
-    const ac = (item.address_components && item.address_components[0]) || {}
-
-    const obj = {
-      place_id: item.place_id,
-      name: ac.long_name || item.name,
-      geometry: {
-        location: new GoogleMapsLatLng(item.geometry.location),
-        viewport: new GoogleMapsLatLngBounds(item.geometry.viewport)
-      },
-      types: item.types
-    }
-
-    if (item.adr_address) {
-      obj.address_formatted = stripHtml(item.adr_address)
-    } else {
-      obj.address_formatted = item.formatted_address
-    }
-
-    return obj
+    return this.parseGeocodeFromLocation(item)
   }
 
   findByPlaceId (placeId) {

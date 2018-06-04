@@ -1,14 +1,14 @@
 const GoogleMapsLatLng = require('./GoogleMapsLatLng')
 
 module.exports = class GoogleMapsLatLngBounds {
-  constructor (southeast, northwest) {
-    if (southeast.b && southeast.f) {
-      this.context = southeast
+  constructor (southwest, northeast) {
+    if (southwest.b && southwest.f) {
+      this.context = southwest
     } else {
-      let latlng = southeast
+      let latlng = southwest
 
-      if (southeast && northwest) {
-        latlng = [southeast, northwest]
+      if (southwest && northeast) {
+        latlng = [southwest, northeast]
       }
 
       this.context = new window.google.maps.LatLngBounds(latlng)
@@ -17,14 +17,14 @@ module.exports = class GoogleMapsLatLngBounds {
     return this
   }
 
-  update (southeast, northwest) {
-    if (southeast.b && southeast.f) {
-      this.context = southeast
+  update (southwest, northeast) {
+    if (southwest.b && southwest.f) {
+      this.context = southwest
     } else {
-      let latlng = southeast
+      let latlng = southwest
 
-      if (southeast && northwest) {
-        latlng = [southeast, northwest]
+      if (southwest && northeast) {
+        latlng = [southwest, northeast]
       }
 
       this.context = new window.google.maps.LatLngBounds(latlng)

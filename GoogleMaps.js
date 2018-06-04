@@ -61,11 +61,18 @@ module.exports = class GoogleMaps {
   }
 
   fitBounds (boundSW, boundNE, zoom) {
+    let bounds
+
+    if (boundSW.constructor.name === 'GoogleMapsLatLngBounds') {
+      zoom = boundNE
+      bounds = boundSW.getContext()
+    } else {
+      bounds = new window.google.maps.LatLngBounds(boundSW.getContext(), boundNE.getContext())
+    }
+
     if (!zoom) {
       zoom = this.options.zoom
     }
-
-    const bounds = new window.google.maps.LatLngBounds(boundSW.get(), boundNE.get())
 
     this.context.fitBounds(bounds)
     this.context.setZoom(zoom)
@@ -90,6 +97,19 @@ module.exports = class GoogleMaps {
 
     this.options.center = center
     this.context.setCenter(center.getContext())
+
+    return this
+  }
+
+  setViewport (sw, ne) {
+    let viewport = sw
+
+    if (sw && ne) {
+      viewport = new GoogleMapsLatLngBounds(sw, ne)
+    }
+
+    this.options.viewport = viewport
+    this.fitBounds(viewport, 12)
 
     return this
   }

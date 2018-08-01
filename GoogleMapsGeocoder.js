@@ -172,7 +172,9 @@ module.exports = class GoogleMapsGeocoder {
         placeId
       }, (results, status) => {
         if (status === window.google.maps.GeocoderStatus.OK) {
-          resolve(results[0])
+          resolve(this.parseGeocodeFromPlaceId(results))
+        } else {
+          reject({ message: 'Geocoding failed!', results, status })
         }
       })
     })
